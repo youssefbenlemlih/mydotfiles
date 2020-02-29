@@ -345,4 +345,7 @@ let g:mkdp_page_title = '「${name}」'
 set cursorline
 autocmd InsertEnter * highlight CursorLine guibg=#000050 guifg=fg
 autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
-
+" tabs
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <C-t> :tabnew<CR>:e .<CR>
