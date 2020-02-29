@@ -12,7 +12,11 @@ Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 "Plug 'scrooloose/nerdcommenter'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
-Plug 'tomasiser/vim-code-dark'"vim theme
+Plug 'lervag/vimtex'
+" A Vim Plugin for Lively Previewing LaTeX PDF Output
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'tomasiser/vim-code-dark'
+"vim theme
 "Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'morhetz/gruvbox'
@@ -21,7 +25,8 @@ Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 " Initialize plugin system
 call plug#end()
-
+"let g:livepreview_previewer = 'mupdf'
+let g:livepreview_cursorhold_recompile = 0
 inoremap jk <ESC>
 nmap <C-n> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
@@ -45,7 +50,7 @@ let g:NERDTreeGitStatusWithFlags = 1
     "\ "Ignored"   : "#808080"   
     "\ }                         
 
-
+:set hlsearch
 let g:NERDTreeIgnore = ['^node_modules$']
 
 " vim-prettier
