@@ -1,8 +1,10 @@
+
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'scrooloose/nerdtree'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'scrooloose/nerdtree'
 "Plug 'tsony-tsonev/nerdtree-git-plugin'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -11,30 +13,291 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 "Plug 'scrooloose/nerdcommenter'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-
 Plug 'lervag/vimtex'
 " A Vim Plugin for Lively Previewing LaTeX PDF Output
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'tomasiser/vim-code-dark'
-"vim theme
 "Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'morhetz/gruvbox'
 
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-" Initialize plugin system
+Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
+Plug 'tomtom/tcomment_vim'
+" show file mofifications on the left side
+Plug 'airblade/vim-gitgutter'
+Plug 'nathanaelkane/vim-indent-guides'
 call plug#end()
+"vimrc
+colorscheme codedark
+"color desert
+set cursorline
+hi CursorLine  term=bold cterm=bold guibg=Grey40 
+nnoremap <C-Left> :tabprevious <CR>                                                                            
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <C-h> :tabprevious<CR>                                                                            
+nnoremap <C-l> :tabnext<CR>
+nnoremap <C-t> :tabnew<CR>:e . <CR>
+" source minimal file
+source ~/.vimrc_min
+
+set encoding=utf-8
+
+" Font
+set guifont=Inconsolata\ Medium\ 12,Monospace\ 11
+" list of stored regex search patterns
+" use like this:
+" /<C-R>=MyRegExName<CR><CR>
+source ~/.vim/regexlist.vim
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+set nowrap
+
+if has("vms")
+  set nobackup    " do not keep a backup file, use versions instead
+else
+  set backup      " keep a backup file
+endif
+set history=50    " keep 50 lines of command line history
+set showcmd    " display incomplete commands
+set incsearch    " do incremental searching
+set diffopt=vertical,filler
+set scrolloff=5
+
+" set path for backup and swap files
+" set backupdir=./.backup,/tmp,./tmp,~/tmp,~/.backup
+set backupdir-=.
+set backupdir-=~/
+set backupdir+=./.backup
+set backupdir+=/tmp
+set backupdir+=/var/tmp
+set directory-=.
+
+"set numbering
+set nu rnu
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+"set mouse=a
+
+" set nicer chars for :set list
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+" delete comment chars, when joining comment lines
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j
+endif
+
+" Put these in an autocmd group, so that we can delete them easily.
+augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 100 characters.
+  autocmd FileType text setlocal textwidth=100
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+
+augroup END
+
+set autoindent    " always set autoindenting on
+
+" genometools include path
+set path+=$GTDIR/src
+
+" completion settings
+set wildmode=longest,list:longest,full
+set wildmenu
+
+" pop up length
+set pumheight=10
+
+"" highlight lines longer then 100chars
+"highlight OverLength ctermbg=red ctermfg=white guifg=white guibg=#592929
+"call matchadd('OverLength', '\%101c.*', 11)
+highlight WhitespaceEOL ctermbg=red guibg=#592929
+call matchadd('WhitespaceEOL', '\s\+$')
+
+set viminfo+=!
+
+"cscope settings
+if has('cscope')
+  set cscopeverbose
+
+  if has('quickfix')
+    set cscopequickfix=s-,c-,d-,i-,t-,e-,f-
+  endif
+
+  if filereadable("cscope.out")
+    cs add cscope.out
+  endif
+
+  cnoreabbrev csa cs add
+  cnoreabbrev csf cs find
+  cnoreabbrev csk cs kill
+  cnoreabbrev csr cs reset
+  cnoreabbrev cssh cs show
+  cnoreabbrev csh cs help
+
+  nmap <C-\>s :csf s <C-R>=expand("<cword>")<CR><CR>
+  nmap <C-\>g :csf g <C-R>=expand("<cword>")<CR><CR>
+  nmap <C-\>c :csf c <C-R>=expand("<cword>")<CR><CR>
+  nmap <C-\>t :csf t <C-R>=expand("<cword>")<CR><CR>
+  nmap <C-\>e :csf e <C-R>=expand("<cword>")<CR><CR>
+  nmap <C-\>f :csf f <C-R>=expand("<cfile>")<CR><CR>
+  nmap <C-\>i :csf i ^<C-R>=expand("<cfile>")<CR>$<CR>
+  nmap <C-\>d :csf d <C-R>=expand("<cword>")<CR><CR>
+endif
+
+" hexedit
+map <Leader>hon :%!xxd<CR>
+map <Leader>hof :%!xxd -r<CR>
+
+" printing options
+set printoptions=paper:A4
+
+" disable flashing
+set noerrorbells visualbell t_vb=
+
+" don't fold something that is only 1 or 2 lines long
+set foldminlines=3
+
+" this breaks lines without spaces at a given length
+function BreakLines(length)
+  let split_pattern = '\(.\{' . a:length . '\}\)'
+  execute 's/' . split_pattern . '/&\r/g'
+endfunction
+
+" sum numbers
+let g:S = 0  "result in global variable S
+function! Sum(number)
+  let g:S = g:S + a:number
+  return a:number
+endfunction
+
+set tags+=./.tags
+
+" add fugitive status
+set laststatus=2
+set statusline=%{fugitive#statusline()}\ %n\ -\ %.40f\ type:%y%m\ %h%w%q%=%l(%p%%):%c%V
+
+"quickfixsigns settings
+noremap <silent> <leader><C-L> :call quickfixsigns#RelNumbersOnce()<cr>
+
+"EasyMotion mappings
+let g:EasyMotion_mapping_j = '<Leader><Leader>t'
+let g:EasyMotion_mapping_k = '<Leader><Leader>n'
+let g:EasyMotion_mapping_n = '<Leader><Leader>l'
+let g:EasyMotion_mapping_N = '<Leader><Leader>L'
+let g:EasyMotion_mapping_t = '<Leader><Leader>j'
+let g:EasyMotion_mapping_T = '<Leader><Leader>J'
+
+" ycm
+let g:ycm_complete_in_comments = 1
+" let g:ycm_key_invoke_completion= '<C-c>'
+let g:ycm_autoclose_preview_window_after_insertion = 0
+let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_global_ycm_extra_conf = '~/Repositories/configs/ycm_extra_conf.py.std'
+" let g:ycm_filetype_whitelist = { 'cpp' : 1, 'c' : 1}
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1
+      \}
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger='<c-o>'
+let g:UltiSnipsListSnippets='<c-l>'
+let g:UltiSnipsJumpForwardTrigger='<c-o>'
+let g:UltiSnipsJumpBackwardTrigger='<c-a>'
+
+" NERDCommenter settings
+let g:NERDRemoveExtraSpace=1
+let g:NERDSpaceDelims=1
+let g:NERDCompactSexyComs=1
+let g:NERDCustomDelimiters = {
+      \ 'ruby': { 'left': '#', 'leftAlt': "=begin", 'rightAlt': "=end" }
+      \ }
+
+" Command-T options
+let g:CommandTMaxHeight=16
+let g:CommandTMaxFiles=40000
+let g:CommandTWildignore="*.sb,*.splint,*.o,**/stest_testsuite/*"
+let g:CommandTFileScanner="git"
+
+" calendar options
+let g:calendar_keys = { 'goto_today': 'T' }
+let g:calendar_monday = 1
+let g:calendar_wruler = 'So Mo Di Mi Do Fr Sa'
+let g:calendar_mruler = 'Jan,Feb,Mär,Apr,Mai,Jun,Jul,Aug,Sep,Okt,Nov,Dez'
+let g:calendar_weeknm = 5
+
+" latex-box folding
+let g:LatexBox_Folding=1
+let g:LatexBox_fold_automatic=0
+" latex-box indent off
+let g:LatexBox_custom_indent=0
+" set contiuously compilation
+let g:LatexBox_latexmk_preview_continuously=1
+let g:LatexBox_quickfix=2
+let g:LatexBox_fold_sections = [
+      \ "part",
+      \ "chapter",
+      \ "section",
+      \ "subsection",
+      \ "subsubsection",
+      \ "paragraph"
+      \ ]
+" Indent_Guides
+let g:indent_guides_enable_on_vim_startup = 1
+
+" set syntax for .h to c
+let g:c_syntax_for_h=1
+
+" delimitMate settings
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 1
+let delimitMate_matchpairs = "(:),{:},[:]"
+
+" OmniSharp (vim8 package)
+"let g:OmniSharp_server_path = '/mnt/c/omnisharp-win-x64/OmniSharp.exe'
+"let g:OmniSharp_translate_cygwin_wsl=1
+"let g:OmniSharp_server_stdio=1
+"let g:OmniSharp_highlight_types=2
+"let g:OmniSharp_typeLookupInPreview=1
+
+" vim: nowrap
 "let g:livepreview_previewer = 'mupdf'
 let g:livepreview_cursorhold_recompile = 0
 inoremap jk <ESC>
-nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-b> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
 " open NERDTree automatically
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * NERDTree
+
+"show hidden files in nerdtree
+let NERDTreeShowHidden=1
 
 let g:NERDTreeGitStatusWithFlags = 1
 "let g:WebDevIconsUnicodeDecorateFolderNodes = 1
@@ -82,7 +345,6 @@ set expandtab
 hi Normal guibg=NONE ctermbg=NONE
 set t_Co=256
 set t_ut=
-colorscheme codedark
 
 " sync open file with NERDTree
 " " Check if NERDTree is open or active
@@ -232,19 +494,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-""Transparent background
-let t:is_transparent = 0
-function! Toggle_transparent()
-    if t:is_transparent == 0
-        hi Normal guibg=NONE ctermbg=NONE
-        let t:is_transparent = 1
-    else
-        set background=dark
-        let t:is_tranparent = 0
-    endif
-endfunction
-nnoremap <C-t> : call Toggle_transparent()<CR>
-
 ""vim prettier on save
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.jsx,*.tsx,*.html,*.ts,*.js,*.json,*.css,*.md,*.scss,*.less,*.graphql Prettier
@@ -258,50 +507,6 @@ au CursorHold,CursorHoldI * checktime
 nmap <C-y> <Plug>MarkdownPreview
 nmap <C-s> <Plug>MarkdownPreviewStop
 nmap <C-o> <Plug>MarkdownPreviewToggle
-" set to 1, nvim will open the preview window after entering the markdown buffer
-" default: 0
-let g:mkdp_auto_start = 0
-
-" set to 1, the nvim will auto close current preview window when change
-" from markdown buffer to another buffer
-" default: 1
-let g:mkdp_auto_close = 1
-
-" set to 1, the vim will refresh markdown when save the buffer or
-" leave from insert mode, default 0 is auto refresh markdown as you edit or
-" move the cursor
-" default: 0
-let g:mkdp_refresh_slow = 0
-
-" set to 1, the MarkdownPreview command can be use for all files,
-" by default it can be use in markdown file
-" default: 0
-let g:mkdp_command_for_global = 0
-
-" set to 1, preview server available to others in your network
-" by default, the server listens on localhost (127.0.0.1)
-" default: 0
-let g:mkdp_open_to_the_world = 0
-
-" use custom IP to open preview page
-" useful when you work in remote vim and preview on local browser
-" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
-" default empty
-let g:mkdp_open_ip = ''
-
-" specify browser to open preview page
-" default: ''
-let g:mkdp_browser = ''
-
-" set to 1, echo preview page url in command line when open preview page
-" default is 0
-let g:mkdp_echo_preview_url = 0
-
-" a custom vim function name to open preview page
-" this function will receive url as param
-" default is empty
-let g:mkdp_browserfunc = ''
-
 " options for markdown render
 " mkit: markdown-it options for render
 " katex: katex options for math
@@ -338,14 +543,6 @@ let g:mkdp_port = ''
 " ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
 
-
-
-
-"
 set cursorline
 autocmd InsertEnter * highlight CursorLine guibg=#000050 guifg=fg
 autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
-" tabs
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <C-t> :tabnew<CR>:e .<CR>
