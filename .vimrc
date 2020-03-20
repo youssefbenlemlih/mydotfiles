@@ -29,6 +29,7 @@ Plug 'tomtom/tcomment_vim'
 " show file mofifications on the left side
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'soli/prolog-vim'
 call plug#end()
 "vimrc
 colorscheme codedark
