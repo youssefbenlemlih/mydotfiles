@@ -30,9 +30,33 @@ Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'soli/prolog-vim'
+Plug 'vimwiki/vimwiki', {'branch': 'dev'}
+Plug 'mhinz/vim-startify',
 call plug#end()
+"run mupdf 
 "vimrc
-colorscheme codedark
+"colorscheme codedark
+" vimwiki pages github
+let wiki_1 = {}
+let wiki_1.path = '~/vimwiki'
+let wiki_1.ext = '.md'
+let wiki_1.syntax = 'markdown'
+let wiki_1.auto_toc = 1
+" Create posts automatically
+let wiki_1.diary_rel_path = '_posts'
+let g:vimwiki_list = [wiki_1]
+let g:vimwiki_dir_link = 'index'
+let g:vimwiki_use_calendar = 1
+
+" vimwiki stuff "
+" Run multiple wikis "
+let g:vimwiki_list = [{'path': '~/study.wiki',
+  \ 'syntax': 'markdown', 'ext': '.md'}]
+set nocompatible
+filetype plugin on
+syntax on
+
+
 "color desert
 set cursorline
 hi CursorLine  term=bold cterm=bold guibg=Grey40 
