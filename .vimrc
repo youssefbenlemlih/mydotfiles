@@ -20,6 +20,7 @@ Plug 'tomasiser/vim-code-dark'
 "Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'morhetz/gruvbox'
+Plug 'ap/vim-buftabline'
 
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
@@ -33,9 +34,8 @@ Plug 'soli/prolog-vim'
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'mhinz/vim-startify',
 call plug#end()
-"run mupdf 
-"vimrc
-"colorscheme codedark
+"run mupdf
+
 " vimwiki pages github
 let wiki_1 = {}
 let wiki_1.path = '~/vimwiki'
@@ -59,12 +59,12 @@ syntax on
 
 "color desert
 set cursorline
-hi CursorLine  term=bold cterm=bold guibg=Grey40 
-nnoremap <C-Left> :tabprevious <CR>                                                                            
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <C-h> :tabprevious<CR>                                                                            
-nnoremap <C-l> :tabnext<CR>
-nnoremap <C-t> :tabnew<CR>:e . <CR>
+hi CursorLine  term=bold cterm=bold guibg=Grey40
+nnoremap <C-Left> :bprevious <CR>
+nnoremap <C-Right> :bnext<CR>
+nnoremap <C-h> :bprevious<CR>
+nnoremap <C-l> :bnext<CR>
+nnoremap <C-t> :e . <CR>
 " source minimal file
 source ~/.vimrc_min
 
@@ -122,16 +122,16 @@ endif
 augroup vimrcEx
   au!
 
-  " For all text files set 'textwidth' to 100 characters.
-  autocmd FileType text setlocal textwidth=100
+" For all text files set 'textwidth' to 100 characters.
+autocmd FileType text setlocal textwidth=100
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal! g`\"" |
-        \ endif
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 
 augroup END
 
@@ -571,3 +571,27 @@ let g:mkdp_page_title = '「${name}」'
 set cursorline
 autocmd InsertEnter * highlight CursorLine guibg=#000050 guifg=fg
 autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
+" ₑₕᵢs
+"alphsubs ---------------------- {{{
+"https://en.wikipedia.org/wiki/List_of_Unicode_characters
+        execute "digraphs ks " . 0x2096
+        execute "digraphs as " . 0x2090
+        execute "digraphs es " . 0x2091
+        execute "digraphs hs " . 0x2095
+        execute "digraphs is " . 0x1D62
+        execute "digraphs ks " . 0x2096
+        execute "digraphs ls " . 0x2097
+        execute "digraphs ms " . 0x2098
+        execute "digraphs ns " . 0x2099
+        execute "digraphs os " . 0x2092
+        execute "digraphs ps " . 0x209A
+        execute "digraphs rs " . 0x1D63
+        execute "digraphs ss " . 0x209B
+        execute "digraphs ts " . 0x209C
+        execute "digraphs us " . 0x1D64
+        execute "digraphs vs " . 0x1D65
+        execute "digraphs xs " . 0x2093
+        "
+        "
+        execute "digraphs jS "   0x02B2
+"}}}
