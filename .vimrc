@@ -1,17 +1,13 @@
-
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'ryanoasis/vim-devicons'
-"Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'lervag/vimtex'
 " A Vim Plugin for Lively Previewing LaTeX PDF Output
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'tomasiser/vim-code-dark'
-"Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'morhetz/gruvbox'
 Plug 'ap/vim-buftabline'
@@ -28,7 +24,6 @@ Plug 'soli/prolog-vim'
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'mhinz/vim-startify',
 call plug#end()
-"run mupdf
 
 " vimwiki pages github
 let wiki_1 = {}
