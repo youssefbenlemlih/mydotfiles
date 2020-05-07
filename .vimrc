@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 "Plug 'tsony-tsonev/nerdtree-git-plugin'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -80,13 +80,8 @@ source ~/.vim/regexlist.vim
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set nowrap
+set wrap
 
-if has("vms")
-  set nobackup    " do not keep a backup file, use versions instead
-else
-  set backup      " keep a backup file
-endif
 set history=50    " keep 50 lines of command line history
 set showcmd    " display incomplete commands
 set incsearch    " do incremental searching
@@ -581,6 +576,7 @@ autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
         execute "digraphs is " . 0x1D62
         execute "digraphs ks " . 0x2096
         execute "digraphs ls " . 0x2097
+        execute "digraphs mS " . 0x1D50
         execute "digraphs ms " . 0x2098
         execute "digraphs ns " . 0x2099
         execute "digraphs os " . 0x2092
@@ -595,3 +591,5 @@ autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
         "
         execute "digraphs jS "   0x02B2
 "}}}
+" prolog sytax highlighting for .pl files
+autocmd BufNewFile,BufRead *.pl set filetype=prolog
