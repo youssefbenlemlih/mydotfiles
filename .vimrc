@@ -3,7 +3,6 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'OmniSharp/omnisharp-vim'
 "Plug 'ryanoasis/vim-devicons'
 "Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
@@ -291,13 +290,6 @@ let g:c_syntax_for_h=1
 let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 let delimitMate_matchpairs = "(:),{:},[:]"
-
-" OmniSharp (vim8 package)
-"let g:OmniSharp_server_path = '/mnt/c/omnisharp-win-x64/OmniSharp.exe'
-"let g:OmniSharp_translate_cygwin_wsl=1
-"let g:OmniSharp_server_stdio=1
-"let g:OmniSharp_highlight_types=2
-"let g:OmniSharp_typeLookupInPreview=1
 
 " vim: nowrap
 "let g:livepreview_previewer = 'mupdf'
