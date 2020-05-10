@@ -210,7 +210,13 @@ let g:LatexBox_fold_sections = [
       \ "subsubsection",
       \ "paragraph"
       \ ]
-" Indent_Guides
+" config for Plug 'lervag/vimtex'
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+" Indentbei_Guides
 let g:indent_guides_enable_on_vim_startup = 1
 
 " set syntax for .h to c
