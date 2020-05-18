@@ -17,10 +17,15 @@ Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'soli/prolog-vim'
-Plug 'vimwiki/vimwiki', {'branch': 'dev'}
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax' 
+Plug 'morhetz/gruvbox' 
+"Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'mhinz/vim-startify',
 call plug#end()
 
+autocmd vimenter * colorscheme gruvbox
+set background=dark    " Setting dark mode
 " vimwiki pages github
 let wiki_1 = {}
 let wiki_1.path = '~/vimwiki'
@@ -215,7 +220,7 @@ let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
-let g:tex_conceal='abdmg'
+"let g:tex_conceal='abdmg'
 " Indentbei_Guides
 let g:indent_guides_enable_on_vim_startup = 1
 
@@ -283,7 +288,7 @@ set signcolumn=yes
 
 ""vim prettier on save
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.jsx,*.tsx,*.html,*.ts,*.js,*.json,*.css,*.md,*.scss,*.less,*.graphql Prettier
+"autocmd BufWritePre *.jsx,*.tsx,*.html,*.ts,*.js,*.json,*.css,*.md,*.scss,*.less,*.graphql Prettier
 
 ""autoload file from disk
 :set autoread
@@ -334,9 +339,7 @@ let g:mkdp_page_title = '「${name}」'
 set cursorline
 autocmd InsertEnter * highlight CursorLine guibg=#000050 guifg=fg
 autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
-" ₑₕᵢs
-"alphsubs ---------------------- {{{
-"https://en.wikipedia.org/wiki/List_of_Unicode_characters
+
         execute "digraphs ks " . 0x2096
         execute "digraphs as " . 0x2090
         execute "digraphs es " . 0x2091
@@ -355,9 +358,12 @@ autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
         execute "digraphs us " . 0x1D64
         execute "digraphs vs " . 0x1D65
         execute "digraphs xs " . 0x2093
-        "
-        "
         execute "digraphs jS "   0x02B2
-"}}}
+
+" spelling
+set spelllang=en_us,de_de
+autocmd BufNewFile,BufRead *.md set spell
+autocmd BufNewFile,BufRead *.tex set spell
+
 " prolog sytax highlighting for .pl files
 autocmd BufNewFile,BufRead *.pl set filetype=prolog
