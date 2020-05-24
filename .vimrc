@@ -46,7 +46,11 @@ set nocompatible
 filetype plugin on
 syntax on
 
-
+let g:pandoc#modules#disabled=["hypertext"]
+"let g:pandoc#hypertext#open_editable_alternates=0
+" open pdf
+autocmd  BufReadCmd *.pdf silent !mupdf -I % &
+autocmd  BufEnter *.pdf bdelete
 set cursorline
 hi CursorLine  term=bold cterm=bold guibg=Grey40
 nnoremap <C-Left> :bprevious <CR>
@@ -128,76 +132,11 @@ set wildmenu
 " pop up length
 set pumheight=10
 
-"" highlight lines longer then 100chars
-"highlight OverLength ctermbg=red ctermfg=white guifg=white guibg=#592929
-"call matchadd('OverLength', '\%101c.*', 11)
-highlight WhitespaceEOL ctermbg=red guibg=#592929
-call matchadd('WhitespaceEOL', '\s\+$')
-
-set viminfo+=!
-
 " disable flashing
 set noerrorbells visualbell t_vb=
 
 " don't fold something that is only 1 or 2 lines long
 set foldminlines=3
-
-" this breaks lines without spaces at a given length
-function BreakLines(length)
-  let split_pattern = '\(.\{' . a:length . '\}\)'
-  execute 's/' . split_pattern . '/&\r/g'
-endfunction
-
-" sum numbers
-let g:S = 0  "result in global variable S
-function! Sum(number)
-  let g:S = g:S + a:number
-  return a:number
-endfunction
-
-"quickfixsigns settings
-noremap <silent> <leader><C-L> :call quickfixsigns#RelNumbersOnce()<cr>
-
-"EasyMotion mappings
-let g:EasyMotion_mapping_j = '<Leader><Leader>t'
-let g:EasyMotion_mapping_k = '<Leader><Leader>n'
-let g:EasyMotion_mapping_n = '<Leader><Leader>l'
-let g:EasyMotion_mapping_N = '<Leader><Leader>L'
-let g:EasyMotion_mapping_t = '<Leader><Leader>j'
-let g:EasyMotion_mapping_T = '<Leader><Leader>J'
-
-" ycm
-let g:ycm_complete_in_comments = 1
-" let g:ycm_key_invoke_completion= '<C-c>'
-let g:ycm_autoclose_preview_window_after_insertion = 0
-let g:ycm_min_num_of_chars_for_completion = 3
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-" let g:ycm_global_ycm_extra_conf = '~/Repositories/configs/ycm_extra_conf.py.std'
-" let g:ycm_filetype_whitelist = { 'cpp' : 1, 'c' : 1}
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1
-      \}
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger='<c-o>'
-let g:UltiSnipsListSnippets='<c-l>'
-let g:UltiSnipsJumpForwardTrigger='<c-o>'
-let g:UltiSnipsJumpBackwardTrigger='<c-a>'
-
-" Command-T options
-let g:CommandTMaxHeight=16
-let g:CommandTMaxFiles=40000
-let g:CommandTWildignore="*.sb,*.splint,*.o,**/stest_testsuite/*"
-let g:CommandTFileScanner="git"
 
 " latex-box folding
 let g:LatexBox_Folding=1
@@ -215,30 +154,12 @@ let g:LatexBox_fold_sections = [
       \ "subsubsection",
       \ "paragraph"
       \ ]
-" config for Plug 'lervag/vimtex'
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
 "let g:tex_conceal='abdmg'
 " Indentbei_Guides
 let g:indent_guides_enable_on_vim_startup = 1
 
 " set syntax for .h to c
 let g:c_syntax_for_h=1
-
-" delimitMate settings
-let delimitMate_expand_space = 1
-let delimitMate_expand_cr = 1
-let delimitMate_matchpairs = "(:),{:},[:]"
-
-" vim: nowrap
-"let g:livepreview_previewer = 'mupdf'
-let g:livepreview_cursorhold_recompile = 0
-inoremap jk <ESC>
-nmap <C-b> :NERDTreeToggle<CR>
-vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
 
 :set hlsearch
 
@@ -262,24 +183,6 @@ hi Normal guibg=NONE ctermbg=NONE
 set t_Co=256
 set t_ut=
 
-" sync open file with NERDTree
-" " Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
-
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
@@ -288,7 +191,6 @@ set signcolumn=yes
 
 ""vim prettier on save
 let g:prettier#autoformat = 0
-"autocmd BufWritePre *.jsx,*.tsx,*.html,*.ts,*.js,*.json,*.css,*.md,*.scss,*.less,*.graphql Prettier
 
 ""autoload file from disk
 :set autoread
@@ -323,18 +225,6 @@ let g:mkdp_preview_options = {
     \ 'sequence_diagrams': {}
     \ }
 
-" use a custom markdown style must be absolute path
-let g:mkdp_markdown_css = '/home/youssef/.mdconfig/css/normal.css'
-
-" use a custom highlight style must absolute path
-let g:mkdp_highlight_css = '/home/youssef/.mdconfig/css/highlighted-line.css'
-
-" use a custom port to start server or random for empty
-let g:mkdp_port = ''
-
-" preview page title
-" ${name} will be replace with the file name
-let g:mkdp_page_title = '「${name}」'
 
 set cursorline
 autocmd InsertEnter * highlight CursorLine guibg=#000050 guifg=fg
