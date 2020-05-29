@@ -26,22 +26,7 @@ call plug#end()
 
 autocmd vimenter * colorscheme gruvbox
 set background=dark    " Setting dark mode
-" vimwiki pages github
-let wiki_1 = {}
-let wiki_1.path = '~/vimwiki'
-let wiki_1.ext = '.md'
-let wiki_1.syntax = 'markdown'
-let wiki_1.auto_toc = 1
-" Create posts automatically
-let wiki_1.diary_rel_path = '_posts'
-let g:vimwiki_list = [wiki_1]
-let g:vimwiki_dir_link = 'index'
-let g:vimwiki_use_calendar = 1
 
-" vimwiki stuff "
-" Run multiple wikis "
-let g:vimwiki_list = [{'path': '~/study.wiki',
-  \ 'syntax': 'markdown', 'ext': '.md'}]
 set nocompatible
 filetype plugin on
 syntax on
@@ -53,10 +38,8 @@ autocmd  BufReadCmd *.pdf silent !mupdf -I % &
 autocmd  BufEnter *.pdf bdelete
 set cursorline
 hi CursorLine  term=bold cterm=bold guibg=Grey40
-nnoremap <C-Left> :bprevious <CR>
-nnoremap <C-Right> :bnext<CR>
-nnoremap <C-h> :bprevious<CR>
-nnoremap <C-l> :bnext<CR>
+nnoremap <C-h> :w<CR>:bprevious<CR>
+nnoremap <C-l> :w<CR>:bnext<CR>
 nnoremap <C-t> :e . <CR>
 " source minimal file
 source ~/.vimrc_min
