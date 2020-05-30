@@ -213,26 +213,6 @@ set cursorline
 autocmd InsertEnter * highlight CursorLine guibg=#000050 guifg=fg
 autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
 
-        execute "digraphs ks " . 0x2096
-        execute "digraphs as " . 0x2090
-        execute "digraphs es " . 0x2091
-        execute "digraphs hs " . 0x2095
-        execute "digraphs is " . 0x1D62
-        execute "digraphs ks " . 0x2096
-        execute "digraphs ls " . 0x2097
-        execute "digraphs mS " . 0x1D50
-        execute "digraphs ms " . 0x2098
-        execute "digraphs ns " . 0x2099
-        execute "digraphs os " . 0x2092
-        execute "digraphs ps " . 0x209A
-        execute "digraphs rs " . 0x1D63
-        execute "digraphs ss " . 0x209B
-        execute "digraphs ts " . 0x209C
-        execute "digraphs us " . 0x1D64
-        execute "digraphs vs " . 0x1D65
-        execute "digraphs xs " . 0x2093
-        execute "digraphs jS "   0x02B2
-
 " spelling
 set spelllang=en_us,de_de
 autocmd BufNewFile,BufRead *.md set spell
