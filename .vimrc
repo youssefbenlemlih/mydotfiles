@@ -69,24 +69,8 @@ autocmd  BufReadCmd *.pdf silent !mupdf -I % &
 autocmd  BufEnter *.pdf bdelete
 nnoremap <C-h> :w<CR>:bprevious<CR>
 nnoremap <C-l> :w<CR>:bnext<CR>
-nnoremap <C-t> :e . <CR>
 autocmd BufReadPost * silent! normal! g`"zv
-let g:LatexBox_Folding=1
-let g:LatexBox_fold_automatic=0
-let g:LatexBox_custom_indent=0
-let g:LatexBox_latexmk_preview_continuously=1
-let g:LatexBox_quickfix=2
-let g:LatexBox_fold_sections = [
-      \ "part",
-      \ "chapter",
-      \ "section",
-      \ "subsection",
-      \ "subsubsection",
-      \ "paragraph"
-      \ ]
-let g:indent_guides_enable_on_vim_startup = 1
 
-" ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " j/k will move virtual lines (lines that wrap)
