@@ -1,4 +1,3 @@
-" Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
@@ -24,9 +23,9 @@ Plug 'morhetz/gruvbox'
 Plug 'mhinz/vim-startify',
 call plug#end()
 
-autocmd vimenter * colorscheme gruvbox
-set background=dark    " Setting dark mode
+colorscheme gruvbox
 
+set background=dark    " Setting dark mode
 set formatoptions+=j " delete comment chars, when joining comment lines
 set autoindent    " always set autoindenting on
 set autoread ""autoload file from disk
@@ -61,11 +60,11 @@ set tabstop=2
 set wildmenu
 set wildmode=longest,list:longest,full " completion settings
 set wrap
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+ " set nicer chars for set list
 
 syntax on
 
 let g:pandoc#modules#disabled=["hypertext"]
-" open pdf
 autocmd  BufReadCmd *.pdf silent !mupdf -I % &
 autocmd  BufEnter *.pdf bdelete
 nnoremap <C-h> :w<CR>:bprevious<CR>
@@ -73,35 +72,15 @@ nnoremap <C-l> :w<CR>:bnext<CR>
 nnoremap <C-t> :e . <CR>
 
 
-" set nicer chars for set list
-if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-endif
 
+ autocmd BufReadPost *
+       \ if line("'\"") > 0 && line("'\"") <= line("$") |
+       \   exe "normal! g`\"" |
+       \ endif
 
-" Put these in an autocmd group, so that we can delete them easily.
-augroup vimrcEx
-  au!
-
-" For all text files set 'textwidth' to 100 characters.
-autocmd FileType text setlocal textwidth=100
-
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
-
-augroup END
-
-" latex-box folding
 let g:LatexBox_Folding=1
 let g:LatexBox_fold_automatic=0
-" latex-box indent off
 let g:LatexBox_custom_indent=0
-" set contiuously compilation
 let g:LatexBox_latexmk_preview_continuously=1
 let g:LatexBox_quickfix=2
 let g:LatexBox_fold_sections = [
@@ -112,13 +91,7 @@ let g:LatexBox_fold_sections = [
       \ "subsubsection",
       \ "paragraph"
       \ ]
-"let g:tex_conceal='abdmg'
-" Indentbei_Guides
 let g:indent_guides_enable_on_vim_startup = 1
-
-" set syntax for .h to c
-let g:c_syntax_for_h=1
-
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -127,47 +100,10 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-""vim prettier on save
-let g:prettier#autoformat = 0
-
 au FocusGained,BufEnter * :checktime
 au CursorHold,CursorHoldI * checktime
 
-"ctrl m for markdown files
-" example
-nmap <C-y> <Plug>MarkdownPreview
-nmap <C-s> <Plug>MarkdownPreviewStop
-nmap <C-o> <Plug>MarkdownPreviewToggle
-" options for markdown render
-" mkit: markdown-it options for render
-" katex: katex options for math
-" uml: markdown-it-plantuml options
-" maid: mermaid options
-" disable_sync_scroll: if disable sync scroll, default 0
-" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
-"   middle: mean the cursor position alway show at the middle of the preview page
-"   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
-" hide_yaml_meta: if hide yaml metadata, default is 1
-" sequence_diagrams: js-sequence-diagrams options
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {}
-    \ }
-
-autocmd InsertEnter * highlight CursorLine guibg=#000050 guifg=fg
-autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
-
-" spelling
 set spelllang=en_us,de_de
 autocmd BufNewFile,BufRead *.md set spell
 autocmd BufNewFile,BufRead *.tex set spell
-
-" prolog sytax highlighting for .pl files
 autocmd BufNewFile,BufRead *.pl set filetype=prolog
