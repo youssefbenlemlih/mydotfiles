@@ -125,3 +125,5 @@ export NVM_DIR="$HOME/.nvm"
 source ~/.fonts/*.sh
 #rxvt config
 #exec xrdb ~/.Xdefaults ~/.Xresource
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

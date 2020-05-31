@@ -10,6 +10,8 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax' 
 Plug 'morhetz/gruvbox' 
 Plug 'mhinz/vim-startify'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 au CursorHold,CursorHoldI * checktime
