@@ -27,195 +27,45 @@ call plug#end()
 autocmd vimenter * colorscheme gruvbox
 set background=dark    " Setting dark mode
 
-set nocompatible
-set cursorline
+set formatoptions+=j " delete comment chars, when joining comment lines
+set autoindent    " always set autoindenting on
 set autoread ""autoload file from disk
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
-
-set wrap
-
-set history=50    " keep 50 lines of command line history
-set showcmd    " display incomplete commands
-set incsearch    " do incremental searching
-set diffopt=vertical,filler
-set scrolloff=5
-
+set backupdir+=~/.vimbackup
 set backupdir-=.  " set path for backup and swap files
 set backupdir-=~/
-set backupdir+=~/.vimbackup
+set cindent
+set cursorline
+set diffopt=vertical,filler
 set directory-=.
-
-set nu rnu "set numbering
-set autoindent    " always set autoindenting on
-
-set path+=$GTDIR/src " genometools include path
-set wildmode=longest,list:longest,full " completion settings
-set wildmenu
-
-set pumheight=10 " pop up length
-
-set noerrorbells visualbell t_vb= " disable flashing
-
+set expandtab " always uses spaces instead of tab characters
 set foldminlines=3 " don't fold something that is only 1 or 2 lines long
-
-  set formatoptions+=j " delete comment chars, when joining comment lines
+set history=50    " keep 50 lines of command line history
 set hlsearch
+set incsearch    " do incremental searching
+set nocompatible
+set noerrorbells visualbell t_vb= " disable flashing
+set nu rnu "set numbering
+set path+=$GTDIR/src " genometools include path
+set pumheight=10 " pop up length
 set relativenumber
-
-set smarttab
-set cindent
-set tabstop=2
+set scrolloff=5
 set shiftwidth=2
-set expandtab " always uses spaces instead of tab characters
-
-hi Normal guibg=NONE ctermbg=NONE
+set shortmess+=c " don't give |ins-completion-menu| messages.
+set showcmd    " display incomplete commands
+set signcolumn=yes " always show signcolumns
+set smarttab
 set t_Co=256
 set t_ut=
-
-set shortmess+=c " don't give |ins-completion-menu| messages.
-
-set signcolumn=yes " always show signcolumns
-
-set hlsearch
-set relativenumber
-
-set smarttab
-set cindent
 set tabstop=2
-set shiftwidth=2
-set expandtab " always uses spaces instead of tab characters
-
-hi Normal guibg=NONE ctermbg=NONE
-set t_Co=256
-set t_ut=
-
-set shortmess+=c " don't give |ins-completion-menu| messages.
-
-set signcolumn=yes " always show signcolumns
-
-set hlsearch
-set relativenumber
-
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-set expandtab " always uses spaces instead of tab characters
-
-hi Normal guibg=NONE ctermbg=NONE
-set t_Co=256
-set t_ut=
-
-set shortmess+=c " don't give |ins-completion-menu| messages.
-
-set signcolumn=yes " always show signcolumns
-
-set hlsearch
-set relativenumber
-
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-set expandtab " always uses spaces instead of tab characters
-
-hi Normal guibg=NONE ctermbg=NONE
-set t_Co=256
-set t_ut=
-
-set shortmess+=c " don't give |ins-completion-menu| messages.
-
-set signcolumn=yes " always show signcolumns
-
-set hlsearch
-set relativenumber
-
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-set expandtab " always uses spaces instead of tab characters
-
-hi Normal guibg=NONE ctermbg=NONE
-set t_Co=256
-set t_ut=
-
-set shortmess+=c " don't give |ins-completion-menu| messages.
-
-set signcolumn=yes " always show signcolumns
-
-set hlsearch
-set relativenumber
-
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-set expandtab " always uses spaces instead of tab characters
-
-hi Normal guibg=NONE ctermbg=NONE
-set t_Co=256
-set t_ut=
-
-set shortmess+=c " don't give |ins-completion-menu| messages.
-
-set signcolumn=yes " always show signcolumns
-
-set hlsearch
-set relativenumber
-
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-set expandtab " always uses spaces instead of tab characters
-
-hi Normal guibg=NONE ctermbg=NONE
-set t_Co=256
-set t_ut=
-
-set shortmess+=c " don't give |ins-completion-menu| messages.
-
-set signcolumn=yes " always show signcolumns
-
-set hlsearch
-set relativenumber
-
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-" always uses spaces instead of tab characters
-set expandtab
-
-hi Normal guibg=NONE ctermbg=NONE
-set t_Co=256
-set t_ut=
-
-set shortmess+=c " don't give |ins-completion-menu| messages.
-
-set signcolumn=yes " always show signcolumns
-
-set hlsearch
-set relativenumber
-
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-set expandtab " always uses spaces instead of tab characters
-
-hi Normal guibg=NONE ctermbg=NONE
-set t_Co=256
-set t_ut=
-
-set shortmess+=c " don't give |ins-completion-menu| messages.
-
-set signcolumn=yes " always show signcolumns
+set wildmenu
+set wildmode=longest,list:longest,full " completion settings
+set wrap
 
 filetype plugin on
 syntax on
 
+hi Normal guibg=NONE ctermbg=NONE
 let g:pandoc#modules#disabled=["hypertext"]
 "let g:pandoc#hypertext#open_editable_alternates=0
 " open pdf
