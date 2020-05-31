@@ -16,19 +16,19 @@ call plug#end()
 
 au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
-autocmd BufEnter *.pdf bdelete
-autocmd BufReadCmd *.pdf silent !mupdf -I % &
-autocmd BufNewFile,BufRead *.md,*.tex set spell
-autocmd BufNewFile,BufRead *.pl set filetype=prolog
-autocmd BufReadPost * silent! normal! g`"zv
-autocmd BufWritePre * %s/\s\+$//e
+au BufEnter *.pdf bdelete
+au BufReadCmd *.pdf silent !mupdf -I % &
+au BufNewFile,BufRead *.md,*.tex set spell
+au BufNewFile,BufRead *.pl set filetype=prolog
+au BufReadPost * silent! normal! g`"zv
+au BufWritePre * %s/\s\+$//e
 colorscheme gruvbox
 let g:pandoc#modules#disabled=["hypertext"]
 nnoremap <C-h> :w<CR>:bprevious<CR>
 nnoremap <C-l> :w<CR>:bnext<CR>
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
-set autoindent "always set autoindenting on
+set autoindent
 set autoread ""autoload file from disk
 set background=dark
 set backspace=indent,eol,start
