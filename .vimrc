@@ -1,8 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-Plug 'ap/vim-buftabline'
-Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
+Plug 'ap/vim-buftabline' "show buffers in top
 Plug 'itchyny/lightline.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
