@@ -14,18 +14,22 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
-au CursorHold,CursorHoldI * checktime
-au FocusGained,BufEnter * :checktime
 au BufEnter *.pdf bdelete
-au BufReadCmd *.pdf silent !mupdf -I % &
 au BufNewFile,BufRead *.md,*.tex set spell
 au BufNewFile,BufRead *.pl set filetype=prolog
+au BufReadCmd *.pdf silent !mupdf -I % &
 au BufReadPost * silent! normal! g`"zv
-au BufWritePre * %s/\s\+$//e
+au CursorHold,CursorHoldI * checktime
+au FocusGained,BufEnter * :checktime
 colorscheme gruvbox
 let g:pandoc#modules#disabled=["hypertext"]
+let mapleader = " "
 nnoremap <C-h> :w<CR>:bprevious<CR>
 nnoremap <C-l> :w<CR>:bnext<CR>
+nnoremap <Leader>; m'A;<ESC>`' " Add a semicolon
+nnoremap <Leader>= m'gg=G`' " Indent whole file
+nnoremap <Leader>cw :%s/\s\+$//g<CR>:nohlsearch<CR>
+nnoremap <Leader>vc :source ~/.vimrc<CR>:echo "Reloaded .vimrc"<CR>
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 set autoindent
