@@ -1,26 +1,17 @@
 call plug#begin('~/.vim/plugged')
-
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-Plug 'lervag/vimtex'
-" A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-
 Plug 'ap/vim-buftabline'
-
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'itchyny/lightline.vim'
 Plug 'tomtom/tcomment_vim'
-" show file mofifications on the left side
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'soli/prolog-vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax' 
 Plug 'morhetz/gruvbox' 
-"Plug 'vimwiki/vimwiki', {'branch': 'dev'}
-Plug 'mhinz/vim-startify',
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 au CursorHold,CursorHoldI * checktime
