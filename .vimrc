@@ -16,8 +16,8 @@ call plug#end()
 
 au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
-autocmd  BufEnter *.pdf bdelete
-autocmd  BufReadCmd *.pdf silent !mupdf -I % &
+autocmd BufEnter *.pdf bdelete
+autocmd BufReadCmd *.pdf silent !mupdf -I % &
 autocmd BufNewFile,BufRead *.md,*.tex set spell
 autocmd BufNewFile,BufRead *.pl set filetype=prolog
 autocmd BufReadPost * silent! normal! g`"zv
@@ -28,7 +28,7 @@ nnoremap <C-h> :w<CR>:bprevious<CR>
 nnoremap <C-l> :w<CR>:bnext<CR>
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
-set autoindent    "always set autoindenting on
+set autoindent "always set autoindenting on
 set autoread ""autoload file from disk
 set background=dark
 set backspace=indent,eol,start
@@ -42,10 +42,10 @@ set directory-=.
 set expandtab "always uses spaces instead of tabs
 set foldminlines=3
 set formatoptions+=j "join comment lines without #
-set history=50    "command line history lenght
+set history=50 "command line history lenght
 set hlsearch
-set incsearch    "do incremental searching
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+ "set nicer chars for set list
+set incsearch "do incremental searching
+set listchars=tab:>\,trail:-,extends:>,precedes:<,nbsp:+
 set nocompatible
 set noerrorbells visualbell t_vb= "disable flashing
 set nu rnu "set numbering
@@ -54,14 +54,14 @@ set relativenumber
 set scrolloff=5
 set shiftwidth=2
 set shortmess+=c "disable completion-menu messages
-set showcmd    "display incomplete commands
+set showcmd "display incomplete commands
 set signcolumn=yes "always show signcolumns
 set smarttab
 set spelllang=en_us,de_de
 set t_Co=256
 set t_ut=
-set tabstop=2
+set tabstop=4
 set wildmenu
-set wildmode=longest,list:longest,full "completion settings
+set wildmode=longest,list:longest,full "completion
 set wrap
 syntax on
