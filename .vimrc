@@ -70,14 +70,7 @@ autocmd  BufEnter *.pdf bdelete
 nnoremap <C-h> :w<CR>:bprevious<CR>
 nnoremap <C-l> :w<CR>:bnext<CR>
 nnoremap <C-t> :e . <CR>
-
-
-
- autocmd BufReadPost *
-       \ if line("'\"") > 0 && line("'\"") <= line("$") |
-       \   exe "normal! g`\"" |
-       \ endif
-
+autocmd BufReadPost * silent! normal! g`"zv
 let g:LatexBox_Folding=1
 let g:LatexBox_fold_automatic=0
 let g:LatexBox_custom_indent=0
