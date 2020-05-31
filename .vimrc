@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-Plug 'ctrlpvim/ctrlp.vim' "fuzzy find files
 Plug 'ap/vim-buftabline' "show buffers in top
 Plug 'itchyny/lightline.vim'
 Plug 'tomtom/tcomment_vim'
