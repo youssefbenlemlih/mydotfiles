@@ -31,8 +31,6 @@ nnoremap <Leader>; m'A;<ESC>`' " Add a semicolon
 nnoremap <Leader>= m'gg=G`' " Indent whole file
 nnoremap <Leader>cw :%s/\s\+$//g<CR>:nohlsearch<CR>
 nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>h :w<CR>:bprevious<CR>
-nnoremap <Leader>l :w<CR>:bnext<CR>
 nnoremap <Leader>vc :source ~/.vimrc<CR>:echo "Reloaded .vimrc"<CR>
 nnoremap <Leader>w :w<CR>:bd<CR>
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
