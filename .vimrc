@@ -62,16 +62,12 @@ set wildmenu
 set wildmode=longest,list:longest,full " completion settings
 set wrap
 
-filetype plugin on
 syntax on
 
-hi Normal guibg=NONE ctermbg=NONE
 let g:pandoc#modules#disabled=["hypertext"]
-"let g:pandoc#hypertext#open_editable_alternates=0
 " open pdf
 autocmd  BufReadCmd *.pdf silent !mupdf -I % &
 autocmd  BufEnter *.pdf bdelete
-hi CursorLine  term=bold cterm=bold guibg=Grey40
 nnoremap <C-h> :w<CR>:bprevious<CR>
 nnoremap <C-l> :w<CR>:bnext<CR>
 nnoremap <C-t> :e . <CR>
@@ -165,8 +161,6 @@ let g:mkdp_preview_options = {
     \ 'sequence_diagrams': {}
     \ }
 
-
-set cursorline
 autocmd InsertEnter * highlight CursorLine guibg=#000050 guifg=fg
 autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
 
