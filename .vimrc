@@ -7,8 +7,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'soli/prolog-vim'
 Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax' 
-Plug 'morhetz/gruvbox' 
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'morhetz/gruvbox'
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -21,6 +21,7 @@ autocmd  BufReadCmd *.pdf silent !mupdf -I % &
 autocmd BufNewFile,BufRead *.md,*.tex set spell
 autocmd BufNewFile,BufRead *.pl set filetype=prolog
 autocmd BufReadPost * silent! normal! g`"zv
+autocmd BufWritePre * %s/\s\+$//e
 colorscheme gruvbox
 let g:pandoc#modules#disabled=["hypertext"]
 nnoremap <C-h> :w<CR>:bprevious<CR>
