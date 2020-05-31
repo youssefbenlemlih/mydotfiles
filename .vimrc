@@ -41,17 +41,9 @@ hi CursorLine  term=bold cterm=bold guibg=Grey40
 nnoremap <C-h> :w<CR>:bprevious<CR>
 nnoremap <C-l> :w<CR>:bnext<CR>
 nnoremap <C-t> :e . <CR>
-" source minimal file
-source ~/.vimrc_min
 
 set encoding=utf-8
 
-" Font
-" set guifont=Inconsolata\ Medium\ 12,Monospace\ 11
-" list of stored regex search patterns
-" use like this:
-" /<C-R>=MyRegExName<CR><CR>
-source ~/.vim/regexlist.vim
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
