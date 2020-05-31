@@ -47,7 +47,7 @@ source ~/.vimrc_min
 set encoding=utf-8
 
 " Font
-set guifont=Inconsolata\ Medium\ 12,Monospace\ 11
+" set guifont=Inconsolata\ Medium\ 12,Monospace\ 11
 " list of stored regex search patterns
 " use like this:
 " /<C-R>=MyRegExName<CR><CR>
@@ -68,9 +68,7 @@ set scrolloff=5
 " set backupdir=./.backup,/tmp,./tmp,~/tmp,~/.backup
 set backupdir-=.
 set backupdir-=~/
-set backupdir+=./.backup
-set backupdir+=/tmp
-set backupdir+=/var/tmp
+set backupdir+=~/.vimbackup
 set directory-=.
 
 "set numbering
