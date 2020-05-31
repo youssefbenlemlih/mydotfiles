@@ -7,7 +7,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'soli/prolog-vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
+Plug 'leafgarland/typescript-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -23,6 +25,8 @@ au FocusGained,BufEnter * :checktime
 colorscheme gruvbox
 let g:pandoc#modules#disabled=["hypertext"]
 let mapleader = " "
+nmap <leader>af  <Plug>(coc-fix-current)
+nmap <leader>rn <Plug>(coc-rename)
 nnoremap <Leader>; m'A;<ESC>`' " Add a semicolon
 nnoremap <Leader>= m'gg=G`' " Indent whole file
 nnoremap <Leader>cw :%s/\s\+$//g<CR>:nohlsearch<CR>
@@ -47,9 +51,10 @@ set directory-=.
 set expandtab "always uses spaces instead of tabs
 set foldminlines=3
 set formatoptions+=j "join comment lines without #
+set hidden
 set history=50 "command line history lenght
 set hlsearch
-set incsearch "do incremental searching
+set incsearch"do incremental searching
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set nocompatible
 set noerrorbells visualbell t_vb= "disable flashing
@@ -66,6 +71,7 @@ set spelllang=en_us,de_de
 set t_Co=256
 set t_ut=
 set tabstop=4
+set updatetime=300
 set wildmenu
 set wildmode=longest,list:longest,full "completion
 set wrap
