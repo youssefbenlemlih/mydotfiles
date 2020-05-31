@@ -28,23 +28,7 @@ autocmd vimenter * colorscheme gruvbox
 set background=dark    " Setting dark mode
 
 set nocompatible
-filetype plugin on
-syntax on
-
-let g:pandoc#modules#disabled=["hypertext"]
-"let g:pandoc#hypertext#open_editable_alternates=0
-" open pdf
-autocmd  BufReadCmd *.pdf silent !mupdf -I % &
-autocmd  BufEnter *.pdf bdelete
 set cursorline
-hi CursorLine  term=bold cterm=bold guibg=Grey40
-nnoremap <C-h> :w<CR>:bprevious<CR>
-nnoremap <C-l> :w<CR>:bnext<CR>
-nnoremap <C-t> :e . <CR>
-
-set encoding=utf-8
-
-
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -65,34 +49,6 @@ set directory-=.
 
 "set numbering
 set nu rnu
-
-" set nicer chars for :set list
-if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-endif
-
-" delete comment chars, when joining comment lines
-if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j
-endif
-
-" Put these in an autocmd group, so that we can delete them easily.
-augroup vimrcEx
-  au!
-
-" For all text files set 'textwidth' to 100 characters.
-autocmd FileType text setlocal textwidth=100
-
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
-
-augroup END
-
 set autoindent    " always set autoindenting on
 
 " genometools include path
@@ -110,6 +66,225 @@ set noerrorbells visualbell t_vb=
 
 " don't fold something that is only 1 or 2 lines long
 set foldminlines=3
+
+" delete comment chars, when joining comment lines
+  set formatoptions+=j
+set hlsearch
+set relativenumber
+
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+" always uses spaces instead of tab characters
+set expandtab
+
+hi Normal guibg=NONE ctermbg=NONE
+set t_Co=256
+set t_ut=
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+set hlsearch
+set relativenumber
+
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+" always uses spaces instead of tab characters
+set expandtab
+
+hi Normal guibg=NONE ctermbg=NONE
+set t_Co=256
+set t_ut=
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+set hlsearch
+set relativenumber
+
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+" always uses spaces instead of tab characters
+set expandtab
+
+hi Normal guibg=NONE ctermbg=NONE
+set t_Co=256
+set t_ut=
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+set hlsearch
+set relativenumber
+
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+" always uses spaces instead of tab characters
+set expandtab
+
+hi Normal guibg=NONE ctermbg=NONE
+set t_Co=256
+set t_ut=
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+set hlsearch
+set relativenumber
+
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+" always uses spaces instead of tab characters
+set expandtab
+
+hi Normal guibg=NONE ctermbg=NONE
+set t_Co=256
+set t_ut=
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+set hlsearch
+set relativenumber
+
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+" always uses spaces instead of tab characters
+set expandtab
+
+hi Normal guibg=NONE ctermbg=NONE
+set t_Co=256
+set t_ut=
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+set hlsearch
+set relativenumber
+
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+" always uses spaces instead of tab characters
+set expandtab
+
+hi Normal guibg=NONE ctermbg=NONE
+set t_Co=256
+set t_ut=
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+set hlsearch
+set relativenumber
+
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+" always uses spaces instead of tab characters
+set expandtab
+
+hi Normal guibg=NONE ctermbg=NONE
+set t_Co=256
+set t_ut=
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+set hlsearch
+set relativenumber
+
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+" always uses spaces instead of tab characters
+set expandtab
+
+hi Normal guibg=NONE ctermbg=NONE
+set t_Co=256
+set t_ut=
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+filetype plugin on
+syntax on
+
+let g:pandoc#modules#disabled=["hypertext"]
+"let g:pandoc#hypertext#open_editable_alternates=0
+" open pdf
+autocmd  BufReadCmd *.pdf silent !mupdf -I % &
+autocmd  BufEnter *.pdf bdelete
+hi CursorLine  term=bold cterm=bold guibg=Grey40
+nnoremap <C-h> :w<CR>:bprevious<CR>
+nnoremap <C-l> :w<CR>:bnext<CR>
+nnoremap <C-t> :e . <CR>
+
+
+" set nicer chars for set list
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+
+" Put these in an autocmd group, so that we can delete them easily.
+augroup vimrcEx
+  au!
+
+" For all text files set 'textwidth' to 100 characters.
+autocmd FileType text setlocal textwidth=100
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
+
+augroup END
 
 " latex-box folding
 let g:LatexBox_Folding=1
@@ -134,7 +309,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 " set syntax for .h to c
 let g:c_syntax_for_h=1
 
-:set hlsearch
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -143,30 +317,11 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-set relativenumber
-
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-" always uses spaces instead of tab characters
-set expandtab
-
-hi Normal guibg=NONE ctermbg=NONE
-set t_Co=256
-set t_ut=
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
 ""vim prettier on save
 let g:prettier#autoformat = 0
 
 ""autoload file from disk
-:set autoread
+set autoread
 au FocusGained,BufEnter * :checktime
 au CursorHold,CursorHoldI * checktime
 
