@@ -29,8 +29,8 @@ set background=dark    " Setting dark mode
 
 set nocompatible
 set cursorline
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+set autoread ""autoload file from disk
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
 
 set wrap
 
@@ -40,35 +40,25 @@ set incsearch    " do incremental searching
 set diffopt=vertical,filler
 set scrolloff=5
 
-" set path for backup and swap files
-" set backupdir=./.backup,/tmp,./tmp,~/tmp,~/.backup
-set backupdir-=.
+set backupdir-=.  " set path for backup and swap files
 set backupdir-=~/
 set backupdir+=~/.vimbackup
 set directory-=.
 
-"set numbering
-set nu rnu
+set nu rnu "set numbering
 set autoindent    " always set autoindenting on
 
-" genometools include path
-set path+=$GTDIR/src
-
-" completion settings
-set wildmode=longest,list:longest,full
+set path+=$GTDIR/src " genometools include path
+set wildmode=longest,list:longest,full " completion settings
 set wildmenu
 
-" pop up length
-set pumheight=10
+set pumheight=10 " pop up length
 
-" disable flashing
-set noerrorbells visualbell t_vb=
+set noerrorbells visualbell t_vb= " disable flashing
 
-" don't fold something that is only 1 or 2 lines long
-set foldminlines=3
+set foldminlines=3 " don't fold something that is only 1 or 2 lines long
 
-" delete comment chars, when joining comment lines
-  set formatoptions+=j
+  set formatoptions+=j " delete comment chars, when joining comment lines
 set hlsearch
 set relativenumber
 
@@ -76,38 +66,15 @@ set smarttab
 set cindent
 set tabstop=2
 set shiftwidth=2
-" always uses spaces instead of tab characters
-set expandtab
+set expandtab " always uses spaces instead of tab characters
 
 hi Normal guibg=NONE ctermbg=NONE
 set t_Co=256
 set t_ut=
 
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
+set shortmess+=c " don't give |ins-completion-menu| messages.
 
-" always show signcolumns
-set signcolumn=yes
-
-set hlsearch
-set relativenumber
-
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-" always uses spaces instead of tab characters
-set expandtab
-
-hi Normal guibg=NONE ctermbg=NONE
-set t_Co=256
-set t_ut=
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
+set signcolumn=yes " always show signcolumns
 
 set hlsearch
 set relativenumber
@@ -116,18 +83,15 @@ set smarttab
 set cindent
 set tabstop=2
 set shiftwidth=2
-" always uses spaces instead of tab characters
-set expandtab
+set expandtab " always uses spaces instead of tab characters
 
 hi Normal guibg=NONE ctermbg=NONE
 set t_Co=256
 set t_ut=
 
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
+set shortmess+=c " don't give |ins-completion-menu| messages.
 
-" always show signcolumns
-set signcolumn=yes
+set signcolumn=yes " always show signcolumns
 
 set hlsearch
 set relativenumber
@@ -136,18 +100,15 @@ set smarttab
 set cindent
 set tabstop=2
 set shiftwidth=2
-" always uses spaces instead of tab characters
-set expandtab
+set expandtab " always uses spaces instead of tab characters
 
 hi Normal guibg=NONE ctermbg=NONE
 set t_Co=256
 set t_ut=
 
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
+set shortmess+=c " don't give |ins-completion-menu| messages.
 
-" always show signcolumns
-set signcolumn=yes
+set signcolumn=yes " always show signcolumns
 
 set hlsearch
 set relativenumber
@@ -156,18 +117,15 @@ set smarttab
 set cindent
 set tabstop=2
 set shiftwidth=2
-" always uses spaces instead of tab characters
-set expandtab
+set expandtab " always uses spaces instead of tab characters
 
 hi Normal guibg=NONE ctermbg=NONE
 set t_Co=256
 set t_ut=
 
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
+set shortmess+=c " don't give |ins-completion-menu| messages.
 
-" always show signcolumns
-set signcolumn=yes
+set signcolumn=yes " always show signcolumns
 
 set hlsearch
 set relativenumber
@@ -176,18 +134,15 @@ set smarttab
 set cindent
 set tabstop=2
 set shiftwidth=2
-" always uses spaces instead of tab characters
-set expandtab
+set expandtab " always uses spaces instead of tab characters
 
 hi Normal guibg=NONE ctermbg=NONE
 set t_Co=256
 set t_ut=
 
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
+set shortmess+=c " don't give |ins-completion-menu| messages.
 
-" always show signcolumns
-set signcolumn=yes
+set signcolumn=yes " always show signcolumns
 
 set hlsearch
 set relativenumber
@@ -196,18 +151,32 @@ set smarttab
 set cindent
 set tabstop=2
 set shiftwidth=2
-" always uses spaces instead of tab characters
-set expandtab
+set expandtab " always uses spaces instead of tab characters
 
 hi Normal guibg=NONE ctermbg=NONE
 set t_Co=256
 set t_ut=
 
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
+set shortmess+=c " don't give |ins-completion-menu| messages.
 
-" always show signcolumns
-set signcolumn=yes
+set signcolumn=yes " always show signcolumns
+
+set hlsearch
+set relativenumber
+
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+set expandtab " always uses spaces instead of tab characters
+
+hi Normal guibg=NONE ctermbg=NONE
+set t_Co=256
+set t_ut=
+
+set shortmess+=c " don't give |ins-completion-menu| messages.
+
+set signcolumn=yes " always show signcolumns
 
 set hlsearch
 set relativenumber
@@ -223,11 +192,9 @@ hi Normal guibg=NONE ctermbg=NONE
 set t_Co=256
 set t_ut=
 
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
+set shortmess+=c " don't give |ins-completion-menu| messages.
 
-" always show signcolumns
-set signcolumn=yes
+set signcolumn=yes " always show signcolumns
 
 set hlsearch
 set relativenumber
@@ -236,18 +203,15 @@ set smarttab
 set cindent
 set tabstop=2
 set shiftwidth=2
-" always uses spaces instead of tab characters
-set expandtab
+set expandtab " always uses spaces instead of tab characters
 
 hi Normal guibg=NONE ctermbg=NONE
 set t_Co=256
 set t_ut=
 
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
+set shortmess+=c " don't give |ins-completion-menu| messages.
 
-" always show signcolumns
-set signcolumn=yes
+set signcolumn=yes " always show signcolumns
 
 filetype plugin on
 syntax on
@@ -320,8 +284,6 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 ""vim prettier on save
 let g:prettier#autoformat = 0
 
-""autoload file from disk
-set autoread
 au FocusGained,BufEnter * :checktime
 au CursorHold,CursorHoldI * checktime
 
