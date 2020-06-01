@@ -13,7 +13,7 @@ COMPLETION_WAITING_DOTS="true"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # plugin dirs
-#  ~/.oh-my-zsh/plugins/* 
+#  ~/.oh-my-zsh/plugins/*
 #  ~/.oh-my-zsh/custom/plugins/
 plugins=(git
   zsh-autosuggestions
@@ -22,14 +22,18 @@ plugins=(git
 
 source $ZSH/oh-my-zsh.sh
 
-alias md='mkdir'
-
-#my scripts
+export BROWSER="firefox"
+export EDITOR='vim'
 export PATH=$PATH:"/home/youssef/scripts"
-#react native debugger
 export PATH="$PATH:/opt/react-native-debugger"
+
+alias md='mkdir'
+alias ls='lsd'
+alias lp='stat -c "%a %n" -- *'
+alias initnvm='source /usr/share/nvm/init-nvm.sh'
+alias vimwiki='vim ~/study.wiki/index.md'
+mu() { mupdf -I  "$@" &> /dev/null & }
 
 #rxvt config
 #exec xrdb ~/.Xdefaults ~/.Xresource
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
