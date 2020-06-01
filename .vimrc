@@ -73,4 +73,11 @@ set updatetime=300
 set wildmenu
 set wildmode=longest,list:longest,full "completion
 set wrap
+let g:coc_global_extensions =["coc-tsserver","coc-java","coc-css","coc-omnisharp"]
 syntax on
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap <leader>gd <Plug>(coc-definition)
