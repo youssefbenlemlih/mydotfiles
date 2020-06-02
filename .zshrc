@@ -1,6 +1,3 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
 ZSH_THEME="robbyrussell"
 
 HYPHEN_INSENSITIVE="true"
@@ -8,9 +5,9 @@ HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+  # under VCS as dirty. This makes repository status check for large repositories
+    # much, much faster.
+    # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # plugin dirs
 #  ~/.oh-my-zsh/plugins/*
@@ -20,6 +17,8 @@ plugins=(git
   zsh-syntax-highlighting
 )
 
+[ -d $HOME/oh-my-zsh ]&& export ZSH=$HOME/oh-my-zsh
+[ -d $HOME/.oh-my-zsh ]&& export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 export BROWSER="firefox"
@@ -32,6 +31,10 @@ command -v lsd && alias ls='lsd'
 alias lp='stat -c "%a %n" -- *'
 alias initnvm='source /usr/share/nvm/init-nvm.sh'
 alias vimwiki='vim ~/study.wiki/index.md'
+alias wstart="/cygdrive/c/Windows/System32/cmd.exe /C start"
+alias vs="wstart *.sln"
+
+[ -f ~/$ZSH//cygdrive/c ] && PATH=$PATH:/cygdrive/c/cygwin64/bin:/cygdrive/c/Users/Youssef/Desktop/work
 mu() { mupdf -I  "$@" &> /dev/null & }
 
 #rxvt config
