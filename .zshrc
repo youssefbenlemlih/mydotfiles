@@ -28,7 +28,7 @@ export PATH=$PATH:"/home/youssef/scripts"
 export PATH="$PATH:/opt/react-native-debugger"
 
 alias md='mkdir'
-alias ls='lsd'
+command -v lsd && alias ls='lsd'
 alias lp='stat -c "%a %n" -- *'
 alias initnvm='source /usr/share/nvm/init-nvm.sh'
 alias vimwiki='vim ~/study.wiki/index.md'
