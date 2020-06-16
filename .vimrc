@@ -23,10 +23,16 @@ au BufReadPost * silent! normal! g`"zv
 au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
 colorscheme gruvbox
+let g:coc_global_extensions =["coc-tsserver","coc-snippets","coc-css"]
 let g:pandoc#modules#disabled=["hypertext"]
 let mapleader = " "
 nmap <leader>af  <Plug>(coc-fix-current)
+nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>rn <Plug>(coc-rename)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gy <Plug>(coc-type-definition)
 nnoremap <Leader>; m'A;<ESC>`' " Add a semicolon
 nnoremap <Leader>= m'gg=G`' " Indent whole file
 nnoremap <Leader>cw :%s/\s\+$//g<CR>:nohlsearch<CR>
@@ -73,11 +79,4 @@ set updatetime=300
 set wildmenu
 set wildmode=longest,list:longest,full "completion
 set wrap
-let g:coc_global_extensions =["coc-tsserver","coc-java","coc-snippets","coc-css","coc-omnisharp"]
 syntax on
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-nmap <leader>gd <Plug>(coc-definition)
