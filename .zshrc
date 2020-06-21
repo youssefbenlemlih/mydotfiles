@@ -25,6 +25,7 @@ export BROWSER="firefox"
 export EDITOR='vim'
 export PATH=$PATH:"/home/youssef/scripts"
 export PATH="$PATH:/opt/react-native-debugger"
+export CLASSPATH=/home/youssef/.javaoutput
 
 alias md='mkdir'
 command -v lsd && alias ls='lsd'
