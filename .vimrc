@@ -37,13 +37,8 @@ nnoremap <Leader>; m'A;<ESC>`' " Add a semicolon
 nnoremap <Leader>= m'gg=G`' " Indent whole file
 nnoremap <Leader>cw :%s/\s\+$//g<CR>:nohlsearch<CR>
 nnoremap <Leader>f :Files<CR>
-<<<<<<< HEAD
 nnoremap <Leader>vc :w<CR>:source ~/.vimrc<CR>:echo "Reloaded .vimrc"<CR>
 nnoremap <Leader>w :w<CR>:bd<CR>
-=======
-nnoremap <Leader>vc :source ~/.vimrc<CR>:echo "Reloaded .vimrc"<CR>
-nnoremap <Leader>w :bd<CR>
->>>>>>> 6d42e68... --wip-- [skip ci]
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 set autoindent
