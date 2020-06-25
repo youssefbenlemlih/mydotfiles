@@ -66,6 +66,7 @@ set history=50 "command line history lenght
 set hlsearch
 set incsearch"do incremental searching
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set mouse=a
 set nocompatible
 set noerrorbells visualbell t_vb= "disable flashing
 set nu rnu "set numbering
