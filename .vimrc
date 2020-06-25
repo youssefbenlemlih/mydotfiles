@@ -15,6 +15,13 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
+let hr = (strftime('%H'))
+if (hr <= 8 && hr >= 20)
+  set background="dark"
+else
+  set background="light"
+endif
+
 au BufEnter *.pdf bdelete
 au BufNewFile,BufRead *.md,*.tex set spell
 au BufNewFile,BufRead *.pl set filetype=prolog
@@ -43,7 +50,6 @@ noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 set autoindent
 set autoread ""autoload file from disk
-set background=dark
 set backspace=indent,eol,start
 set backupdir+=~/.vimbackup
 set backupdir-=.

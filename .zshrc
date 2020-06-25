@@ -37,7 +37,10 @@ alias wstart="/cygdrive/c/Windows/System32/cmd.exe /C start"
 alias vs="chmod 770 *.sln && wstart *.sln && chmod 664 *.sln"
 alias devenv="/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2019/Professional/Common7/IDE/devenv.exe"
 [ -f ~/$ZSH//cygdrive/c ] && PATH=$PATH:/cygdrive/c/cygwin64/bin:/cygdrive/c/Users/Youssef/Desktop/work
-mu() { mupdf -I  "$@" &> /dev/null & }
+# mu() { mupdf -I  "$@" &> /dev/null & }
+alias mu="mupdf -I"
+alias -s pdf="mupdf -I"
+alias -s md="vim"
 
 #rxvt config
 #exec xrdb ~/.Xdefaults ~/.Xresource
