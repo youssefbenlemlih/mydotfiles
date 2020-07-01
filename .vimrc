@@ -31,6 +31,7 @@ au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
 colorscheme gruvbox
 let g:coc_global_extensions =["coc-tsserver","coc-snippets","coc-css"]
+let g:pandoc#formatting#mode='ha'
 let g:pandoc#modules#disabled=["hypertext"]
 let mapleader = " "
 nmap <leader>af  <Plug>(coc-fix-current)
@@ -40,6 +41,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gy <Plug>(coc-type-definition)
+nmap Y y$
 nnoremap <Leader>; m'A;<ESC>`' " Add a semicolon
 nnoremap <Leader>= m'gg=G`' " Indent whole file
 nnoremap <Leader>cw :%s/\s\+$//g<CR>:nohlsearch<CR>
@@ -54,6 +56,7 @@ set backspace=indent,eol,start
 set backupdir+=~/.vimbackup
 set backupdir-=.
 set backupdir-=~/
+set breakindent
 set cindent
 set cursorline
 set diffopt=vertical,filler
@@ -61,6 +64,7 @@ set directory-=.
 set expandtab "always uses spaces instead of tabs
 set foldminlines=3
 set formatoptions+=j "join comment lines without #
+set formatoptions+=w
 set hidden
 set history=50 "command line history lenght
 set hlsearch
