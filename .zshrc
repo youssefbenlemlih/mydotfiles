@@ -27,6 +27,7 @@ export CLASSPATH=/home/youssef/.javaoutput
 
 command -v lsd && alias ls='lsd'
 
+[ -f ~/$ZSH//mnt/c ] && PATH=$PATH:/mnt/c/cygwin64/bin:/mnt/c/Users/Youssef/Desktop/work
 alias -s md="vim"
 alias -s pdf="mupdf -I"
 alias devenv="/mnt/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2019/Professional/Common7/IDE/devenv.exe"
@@ -38,6 +39,6 @@ alias vrc='vim ~/.vimrc'
 alias vzsh='vim ~/.zshrc'
 alias vimwiki='vim ~/study.wiki/index.md'
 alias vs="chmod 770 *.sln && wstart *.sln && chmod 664 *.sln"
-alias wstart="cmd.exe /C start"
+alias wstart="/mnt/c/Windows/System32/cmd.exe /C start" #Windows
 alias code="/mnt/c/Users/YBenlemlih/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe"
 alias desktop="wstart 'C:\Users\YBenlemlih\AppData\Local\GitHubDesktop\GitHubDesktop.exe'"
