@@ -17,21 +17,19 @@ plugins=(git
   zsh-syntax-highlighting
 )
 
-[ -d $HOME/oh-my-zsh ]&& export ZSH=$HOME/oh-my-zsh
 [ -d $HOME/.oh-my-zsh ]&& export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 export BROWSER="firefox"
 export EDITOR='vim'
 export PATH=$PATH:"/home/youssef/scripts"
-export PATH="$PATH:/opt/react-native-debugger"
 export CLASSPATH=/home/youssef/.javaoutput
 
+command -v lsd && alias ls='lsd'
 
-[ -f ~/$ZSH//cygdrive/c ] && PATH=$PATH:/cygdrive/c/cygwin64/bin:/cygdrive/c/Users/Youssef/Desktop/work
 alias -s md="vim"
 alias -s pdf="mupdf -I"
-alias devenv="/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2019/Professional/Common7/IDE/devenv.exe"
+alias devenv="/mnt/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2019/Professional/Common7/IDE/devenv.exe"
 alias initnvm='source /usr/share/nvm/init-nvm.sh'
 alias lp='stat -c "%a %n" -- *'
 alias md='mkdir'
@@ -40,7 +38,6 @@ alias vrc='vim ~/.vimrc'
 alias vzsh='vim ~/.zshrc'
 alias vimwiki='vim ~/study.wiki/index.md'
 alias vs="chmod 770 *.sln && wstart *.sln && chmod 664 *.sln"
-alias wstart="/cygdrive/c/Windows/System32/cmd.exe /C start" #Windows
-command -v lsd && alias ls='lsd'
-#exec xrdb ~/.Xdefaults ~/.Xresource #rxvt config
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias wstart="cmd.exe /C start"
+alias code="/mnt/c/Users/YBenlemlih/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe"
+alias desktop="wstart 'C:\Users\YBenlemlih\AppData\Local\GitHubDesktop\GitHubDesktop.exe'"

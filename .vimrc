@@ -31,6 +31,7 @@ au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
 colorscheme gruvbox
 let g:coc_global_extensions =["coc-tsserver","coc-snippets","coc-css"]
+let g:gruvbox_contrast_light="hard"
 let g:pandoc#formatting#mode='ha'
 let g:pandoc#modules#disabled=["hypertext"]
 let mapleader = " "
@@ -69,10 +70,12 @@ set hidden
 set history=50 "command line history lenght
 set hlsearch
 set incsearch"do incremental searching
+set laststatus=2
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set mouse=a
 set nocompatible
 set noerrorbells visualbell t_vb= "disable flashing
+set noshowmode
 set nu rnu "set numbering
 set pumheight=10 "pop up length
 set relativenumber
