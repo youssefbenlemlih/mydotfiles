@@ -32,6 +32,8 @@ au FocusGained,BufEnter * :checktime
 colorscheme gruvbox
 let g:coc_global_extensions =["coc-tsserver","coc-snippets","coc-css"]
 let g:gruvbox_contrast_light="hard"
+let g:pandoc#command#autoexec_command="Pandoc pdf --wrap=preserve -V geometry:margin=2cm"
+let g:pandoc#command#autoexec_on_writes=1
 let g:pandoc#formatting#mode='ha'
 let g:pandoc#modules#disabled=["hypertext"]
 let mapleader = " "
