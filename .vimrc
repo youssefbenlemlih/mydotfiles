@@ -16,10 +16,10 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let hr = (strftime('%H'))
-if (hr <= 8 && hr >= 20)
-  set background="dark"
+if (hr <= 8 || hr >= 20)
+  set background=dark
 else
-  set background="light"
+  set background=light
 endif
 
 au BufEnter *.pdf bdelete
