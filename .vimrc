@@ -31,19 +31,25 @@ au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
 colorscheme gruvbox
 let g:coc_global_extensions =["coc-tsserver","coc-snippets","coc-css"]
+let g:gruvbox_contrast_dark="hard"
 let g:gruvbox_contrast_light="hard"
 let g:pandoc#command#autoexec_command="Pandoc pdf --wrap=preserve -V geometry:margin=2cm"
 let g:pandoc#command#autoexec_on_writes=1
 let g:pandoc#formatting#mode='ha'
 let g:pandoc#modules#disabled=["hypertext"]
 let mapleader = " "
+nmap <F1> <ESC>
+nmap <leader>S VG:sort u<CR>
 nmap <leader>af  <Plug>(coc-fix-current)
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>s :%s///g<left><left><left>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gy <Plug>(coc-type-definition)
+nmap Q <Nop>
+nmap W I<ESC>l
 nmap Y y$
 nnoremap <Leader>; m'A;<ESC>`' " Add a semicolon
 nnoremap <Leader>= m'gg=G`' " Indent whole file
