@@ -16,7 +16,7 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let hr = (strftime('%H'))
-if (hr <= 8 || hr >= 20)
+if (hr <= 7 || hr >= 20)
   set background=dark
 else
   set background=light
@@ -43,6 +43,12 @@ nmap <leader>S VG:sort u<CR>
 nmap <leader>af  <Plug>(coc-fix-current)
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>j ddp
+nmap <leader>k ddkP
+nmap <leader>bn :bn<CR>
+nmap <leader>bp :bp<CR>
+nmap <leader>bd :bd<CR>
+nmap <leader>ev :e ~/.vimrc<CR>
 nmap <leader>s :%s///g<left><left><left>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
