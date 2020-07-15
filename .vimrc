@@ -30,7 +30,7 @@ au BufReadPost * silent! normal! g`"zv
 au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
 colorscheme gruvbox
-let g:coc_global_extensions =["coc-tsserver","coc-snippets","coc-css"]
+let g:coc_global_extensions =["coc-tsserver","coc-omnisharp","coc-snippets","coc-css"]
 let g:gruvbox_contrast_dark="hard"
 let g:gruvbox_contrast_light="hard"
 let g:pandoc#command#autoexec_command="Pandoc pdf --wrap=preserve -V geometry:margin=2cm"
