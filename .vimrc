@@ -16,7 +16,7 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let hr = (strftime('%H'))
-if (hr <= 7 || hr >= 20)
+if (hr <= 7 || hr >= 22)
   set background=dark
 else
   set background=light
@@ -41,6 +41,7 @@ let mapleader = " "
 nmap <F1> <ESC>
 nmap <leader>S VG:sort u<CR>
 nmap <leader>af  <Plug>(coc-fix-current)
+nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>j ddp
