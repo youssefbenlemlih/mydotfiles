@@ -190,13 +190,13 @@ mode "resize" {
         bindsym Right       resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
-        bindsym Return $mode "default"
-        bindsym Escape $mode "default"
-        bindsym $mod+r $mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 
 for_window [window_role="GtkFileChooserDialog"] fullscreen enable
-bindsym $mod+r $mode "resize"
+bindsym $mod+r mode "resize"
 
 #exec_always --no-startup-id ""
 exec --no-startup-id "feh --bg-fill ~/wallpapers/ACTUAL.jpg"
