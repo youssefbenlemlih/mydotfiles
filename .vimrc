@@ -19,7 +19,7 @@ let hr = (strftime('%H'))
 if (hr <= 7 || hr >= 22)
   set background=dark
 else
-  set background=light
+set background=dark
 endif
 
 au BufEnter *.pdf bdelete
