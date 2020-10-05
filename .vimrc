@@ -40,6 +40,10 @@ let g:pandoc#formatting#mode='ha'
 let g:pandoc#modules#disabled=["hypertext"]
 let mapleader = " "
 
+imap hh <Esc>
+imap jj <Esc>
+imap kk <Esc>
+imap ll <Esc>
 nmap <F1> <ESC>
 nmap <leader>S VG:sort u<CR>
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -57,7 +61,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap Q <Nop>
+nmap Q A
 nmap W I<ESC>l
 nmap Y y$
 nnoremap <Leader>; m'A;<ESC>`' " Add a semicolon

@@ -58,3 +58,9 @@ initnvm(){
   # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
 initnvm
+alias vs="chmod 770 *.sln && wstart *.sln && chmod 664 *.sln"
+alias wstart="cmd.exe /C start"
+alias code="/mnt/c/Users/YBenlemlih/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe"
+alias desktop="wstart 'C:\Users\YBenlemlih\AppData\Local\GitHubDesktop\GitHubDesktop.exe'"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
