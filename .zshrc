@@ -27,9 +27,10 @@ alias -s pdf="mupdf -I"
 alias lp='stat -c "%a %n" -- *'
 alias md='mkdir'
 alias mu="mupdf -I"
+alias tst=tig status
 alias vrc='vim ~/.vimrc'
 alias vzsh='vim ~/.zshrc'
-alias vimwiki='vim ~/study.wiki/index.md'
+
 command -v lsd && alias ls='lsd'
 
 if [[ "$HOST" = "Youssef-PC" ]]; then

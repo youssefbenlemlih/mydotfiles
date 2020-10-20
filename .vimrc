@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'ap/vim-buftabline' "show buffers in top
+Plug 'ap/vim-css-color' "show buffers in top'
 Plug 'itchyny/lightline.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
@@ -16,10 +17,10 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let hr = (strftime('%H'))
-if (hr <= 7 || hr >= 22)
+if (hr <= 7 || hr >= 19)
   set background=dark
 else
-set background=dark
+  set background=light
 endif
 
 au BufEnter *.pdf bdelete
@@ -38,18 +39,19 @@ let g:pandoc#command#autoexec_on_writes=1
 let g:pandoc#formatting#mode='ha'
 let g:pandoc#modules#disabled=["hypertext"]
 let mapleader = " "
+
 nmap <F1> <ESC>
 nmap <leader>S VG:sort u<CR>
-nmap <leader>af  <Plug>(coc-fix-current)
 nmap <leader>ac  <Plug>(coc-codeaction)
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>j ddp
-nmap <leader>k ddkP
+nmap <leader>af  <Plug>(coc-fix-current)
+nmap <leader>bd :bd<CR>
 nmap <leader>bn :bn<CR>
 nmap <leader>bp :bp<CR>
-nmap <leader>bd :bd<CR>
 nmap <leader>ev :e ~/.vimrc<CR>
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>j ddp
+nmap <leader>k ddkP
+nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>s :%s///g<left><left><left>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -62,6 +64,7 @@ nnoremap <Leader>; m'A;<ESC>`' " Add a semicolon
 nnoremap <Leader>= m'gg=G`' " Indent whole file
 nnoremap <Leader>cw :%s/\s\+$//g<CR>:nohlsearch<CR>
 nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>m /=======\\||||||||\\|<<<<<<<\\|>>>>>>><CR>    
 nnoremap <Leader>vc :w<CR>:source ~/.vimrc<CR>:echo "Reloaded .vimrc"<CR>
 nnoremap <Leader>w :w<CR>:bd<CR>
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
