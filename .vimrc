@@ -23,6 +23,7 @@ else
   set background=light
 endif
 
+
 au BufEnter *.pdf bdelete
 au BufNewFile,BufRead *.md,*.tex set spell
 au BufNewFile,BufRead *.pl set filetype=prolog
@@ -31,6 +32,10 @@ au BufReadPost * silent! normal! g`"zv
 au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
 colorscheme gruvbox
+imap hh <Esc>
+imap jj <Esc>
+imap kk <Esc>
+imap ll <Esc>
 let g:coc_global_extensions =["coc-tsserver","coc-omnisharp","coc-snippets","coc-css"]
 let g:gruvbox_contrast_dark="hard"
 let g:gruvbox_contrast_light="hard"
@@ -39,11 +44,6 @@ let g:pandoc#command#autoexec_on_writes=1
 let g:pandoc#formatting#mode='ha'
 let g:pandoc#modules#disabled=["hypertext"]
 let mapleader = " "
-
-imap hh <Esc>
-imap jj <Esc>
-imap kk <Esc>
-imap ll <Esc>
 nmap <F1> <ESC>
 nmap <leader>S VG:sort u<CR>
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -64,6 +64,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap Q A
 nmap W I<ESC>l
 nmap Y y$
+nnoremap <Down> <C-W>j
 nnoremap <Leader>; m'A;<ESC>`' " Add a semicolon
 nnoremap <Leader>= m'gg=G`' " Indent whole file
 nnoremap <Leader>cw :%s/\s\+$//g<CR>:nohlsearch<CR>
@@ -71,6 +72,9 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>m /=======\\||||||||\\|<<<<<<<\\|>>>>>>><CR>    
 nnoremap <Leader>vc :w<CR>:source ~/.vimrc<CR>:echo "Reloaded .vimrc"<CR>
 nnoremap <Leader>w :w<CR>:bd<CR>
+nnoremap <Left> <C-W>h
+nnoremap <Right> <C-W>l
+nnoremap <Up> <C-W>k
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 set autoindent

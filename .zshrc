@@ -17,7 +17,7 @@ plugins=(git
 [ -d $HOME/.oh-my-zsh ]&& export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
-export BROWSER="firefox"
+export BROWSER="/mnt/c/Windows/System32/cmd.exe /C start"
 export EDITOR='vim'
 export PATH="$PATH:$HOME/scripts"
 export CLASSPATH="$HOME/.javaoutput"
@@ -64,3 +64,6 @@ alias code="/mnt/c/Users/YBenlemlih/AppData/Local/Programs/Microsoft\ VS\ Code/C
 alias desktop="wstart 'C:\Users\YBenlemlih\AppData\Local\GitHubDesktop\GitHubDesktop.exe'"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -d /usr/local/go/bin ] && export PATH=$PATH:/usr/local/go/bin
+alias tst="tig status"
+alias v="vim"
