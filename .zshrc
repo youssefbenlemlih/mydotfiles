@@ -17,7 +17,6 @@ plugins=(git
 [ -d $HOME/.oh-my-zsh ]&& export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
-export BROWSER="/mnt/c/Windows/System32/cmd.exe /C start"
 export EDITOR='vim'
 export PATH="$PATH:$HOME/scripts"
 export CLASSPATH="$HOME/.javaoutput"
@@ -25,32 +24,40 @@ export CLASSPATH="$HOME/.javaoutput"
 alias -s md="vim"
 alias -s pdf="mupdf -I"
 alias lp='stat -c "%a %n" -- *'
+alias gco.="gco ."
 alias md='mkdir'
 alias mu="mupdf -I"
-alias tst=tig status
-alias vrc='vim ~/.vimrc'
-alias vzsh='vim ~/.zshrc'
+alias tst="tig status"
+alias v="vim"
+alias vrc="vim ~/.vimrc"
+alias vzsh="vim ~/.zshrc"
 
-command -v lsd && alias ls='lsd'
+command -v lsd && alias ls="lsd"
+# command -v nuget.exe && [[ ! command -v nuget ]] && alias nuget="nuget.exe"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -d /usr/local/go/bin ] && export PATH=$PATH:/usr/local/go/bin
+
+if grep -q Microsoft /proc/version; then
+  export WINDOWS="1"
+  export WINDOWS_USERNAME=${$(cmd.exe /c "echo %USERNAME%")%?}
+fi
 
 if [[ "$HOST" = "Youssef-PC" ]]; then
+  # HP specifics
   export NVM_DIR="$HOME/.nvm"
   PATH=$PATH:/mnt/c/Users/Youssef/Desktop/work
-  export WINDOWS="1"
-elif [[ "$HOST" = "YBenlemlih" ]]; then
-  export WINDOWS="1"
-elif [[ "$HOST" = "t43" ]]; then
-  export NVM_DIR="/usr/share/nvm"
-else
-  echo "set NVM_DIR !"
+
+elif [[ "$HOST" = "???" ]]; then
+  # Work computer specifics
 fi
 
 if [[ "$WINDOWS" = "1" ]]; then
-  alias wstart="/mnt/c/Windows/System32/cmd.exe /C start" #Windows
-  alias code="/mnt/c/Users/$HOST/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe"
-  # alias desktop="wstart 'C:\Users\$HOST\AppData\Local\GitHubDesktop\GitHubDesktop.exe'"
+  alias code="wstart 'C:\\Users\\$WINDOWS_USERNAME\\AppData\\Local\\Programs\\Microsoft\ VS\ Code\\Code.exe'"
+  alias desktop="wstart 'C:\\Users\\$WINDOWS_USERNAME\\AppData\\Local\\GitHubDesktop\\GitHubDesktop.exe'"
+  alias wstart="/mnt/c/Windows/System32/cmd.exe /C start"
   alias devenv="/mnt/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2019/Professional/Common7/IDE/devenv.exe"
-  alias vs="chmod 770 *.sln && wstart *.sln && chmod 664 *.sln"
+  alias vs="wstart *.sln"
+  export BROWSER="/mnt/c/Windows/System32/cmd.exe /C start"
 fi
 
 initnvm(){
@@ -58,12 +65,3 @@ initnvm(){
   # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
 initnvm
-alias vs="chmod 770 *.sln && wstart *.sln && chmod 664 *.sln"
-alias wstart="cmd.exe /C start"
-alias code="/mnt/c/Users/YBenlemlih/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe"
-alias desktop="wstart 'C:\Users\YBenlemlih\AppData\Local\GitHubDesktop\GitHubDesktop.exe'"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -d /usr/local/go/bin ] && export PATH=$PATH:/usr/local/go/bin
-alias tst="tig status"
-alias v="vim"

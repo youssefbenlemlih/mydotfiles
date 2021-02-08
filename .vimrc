@@ -32,10 +32,6 @@ au BufReadPost * silent! normal! g`"zv
 au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
 colorscheme gruvbox
-imap hh <Esc>
-imap jj <Esc>
-imap kk <Esc>
-imap ll <Esc>
 let g:coc_global_extensions =["coc-tsserver","coc-omnisharp","coc-snippets","coc-css"]
 let g:gruvbox_contrast_dark="hard"
 let g:gruvbox_contrast_light="hard"
@@ -69,7 +65,7 @@ nnoremap <Leader>; m'A;<ESC>`' " Add a semicolon
 nnoremap <Leader>= m'gg=G`' " Indent whole file
 nnoremap <Leader>cw :%s/\s\+$//g<CR>:nohlsearch<CR>
 nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>m /=======\\||||||||\\|<<<<<<<\\|>>>>>>><CR>    
+nnoremap <Leader>m /[\<\>=]{5}<CR>    
 nnoremap <Leader>vc :w<CR>:source ~/.vimrc<CR>:echo "Reloaded .vimrc"<CR>
 nnoremap <Leader>w :w<CR>:bd<CR>
 nnoremap <Left> <C-W>h
